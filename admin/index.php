@@ -1,25 +1,25 @@
 <?php
 
-session_start();
-require '../config/config.php';
-require '../config/common.php';
+  session_start();
+  require '../config/config.php';
+  require '../config/common.php';
 
-if (empty($_SESSION['user_id']) && empty($_SESSION['logged_in'])) {
-  header('Location: login.php');
-}
-
-if($_SESSION['role'] != 1) {
-  header('Location: login.php');
-}
-
-if(!empty($_POST['search'])) {
-  setcookie('search', $_POST['search'], time() + (86400 * 30), "/");
-} else {
-  if(empty($_GET['pageno'])) {
-    unset($_COOKIE['search']);
-    setcookie('search', null, -1, '/');
+  if (empty($_SESSION['user_id']) && empty($_SESSION['logged_in'])) {
+    header('Location: login.php');
   }
-}
+
+  if($_SESSION['role'] != 1) {
+    header('Location: login.php');
+  }
+
+  // if(!empty($_POST['search'])) {
+  //   setcookie('search', $_POST['search'], time() + (86400 * 30), "/");
+  // } else {
+  //   if(empty($_GET['pageno'])) {
+  //     unset($_COOKIE['search']);
+  //     setcookie('search', null, -1, '/');
+  //   }
+  // }
 
 ?> 
 

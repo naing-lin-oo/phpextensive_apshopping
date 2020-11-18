@@ -38,11 +38,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       $link_array=explode('/',$link);
       $page = end($link_array);
     ?>
-
-
-
   
-    <form class="form-inline ml-3" method="post" action="<?php echo $page=='index.php' ? 'index.php' : 'user_list.php'; ?>">
+    <form class="form-inline ml-3" method="post" 
+      <?php if($page == 'index.php'): ?>
+      action="index.php"
+      <?php elseif($page == 'category.php'): ?>
+      action="category.php"
+      <?php elseif($page == 'user_list.php'): ?>
+      action="user_list.php"
+      <?php endif; ?>
+      >
     <input name="_token" type="hidden" value="<?php echo $_SESSION['_token']; ?>">
     
       <div class="input-group input-group-sm">
@@ -94,7 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="user_list.php" class="nav-link">
+            <a href="category.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
               Category
